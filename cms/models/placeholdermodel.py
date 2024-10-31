@@ -782,13 +782,11 @@ class Placeholder(models.Model):
             cursor.execute(sql)
         elif db_vendor == 'postgresql':
             sql = (
-                'UPDATE {0} '
-                'SET position = RowNbrs.RowNbr '
-                'FROM ('
-                'SELECT  ID, ROW_NUMBER() OVER (ORDER BY position) AS RowNbr '
-                'FROM {0} WHERE placeholder_id=%s AND language=%s '
-                ') RowNbrs '
-                'WHERE {0}.id=RowNbrs.id'
+                'WITH RowNbrs AS ('
+                '    SELECT ID, ROW_NUMBER() OVER (ORDER BY position) AS RowNbr'
+                '    FROM {0} WHERE placeholder_id=%s AND language=%s '
+                ') UPDATE {0} SET position = RowNbrs.RowNbr '
+                'FROM RowNbrs WHERE {0}.id = RowNbrs.id'
             )
             sql = sql.format(connection.ops.quote_name(CMSPlugin._meta.db_table))
             cursor.execute(sql, [self.pk, language])
