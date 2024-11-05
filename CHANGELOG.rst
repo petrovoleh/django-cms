@@ -2,6 +2,24 @@
 Changelog
 =========
 
+Bug Fixes:
+----------
+* Accept legacy action names for page permission check (#8022) (fc4838f99) -- Fabian Braun
+
+Statistics:
+-----------
+
+This release includes 4 pull requests, and was created with the help of the following contributors (in alphabetical order):
+
+* Fabian Braun (1 pull request)
+* Github Release Action (3 pull requests)
+
+With the review help of the following contributors:
+
+* Github Release Action
+
+Thanks to all contributors for their efforts!
+
 3.11.8 (2024-09-10)
 ===================
 
