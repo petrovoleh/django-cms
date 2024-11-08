@@ -75,12 +75,13 @@ class PlaceholderToolbar(CMSToolbar):
         else:
             page_pk = ''
             disabled = True
-
-        url = '{url}?page={page}&language={lang}&edit'.format(
-            url=reverse("cms_wizard_create"),
-            page=page_pk,
-            lang=self.toolbar.site_language,
-        )
+        url = "/"
+        
+        # url = '{url}?page={page}&language={lang}&edit'.format(
+        #     url=reverse("cms_wizard_create"),
+        #     page=page_pk,
+        #     lang=self.toolbar.site_language,
+        # )
         self.toolbar.add_modal_button(title, url,
                                       side=self.toolbar.RIGHT,
                                       disabled=disabled,
